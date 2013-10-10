@@ -44,7 +44,7 @@ logger = logging.getLogger(__name__)
 
 
 def parse_book_data(book_data_str):
-    tmp = book_data_str.split(':')
+    tmp = book_data_str.rsplit(':', 7)
     data = dict(zip(['title', 'encrypted_content', 'purchase_time', 
         'is_sample', 'is_gift', 'has_formula', 'has_added', 'price'], tmp))
     for key in ['is_sample', 'is_gift', 'has_formula', 'has_added']:

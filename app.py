@@ -13,8 +13,11 @@ app = Flask(__name__)
 def index():
     return 'index'
 
-@app.route('/send', methods=['POST'])
+@app.route('/send', methods=['GET', 'POST'])
 def send():
+    if request.method == 'GET':
+        return '不是让你打开啊！！这个地址是填到设置里面的！！'
+
     book_id = request.form['book_id']
     book_data = request.form['book_data']
     to_email = request.form['to_email']

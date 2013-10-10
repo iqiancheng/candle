@@ -39,9 +39,6 @@ chrome.pageAction.onClicked.addListener(function(tab) {
         return;
     }
 
-    // loading icon
-    var timeout = flash_icon(tab.id);
-
     var port = chrome.tabs.connect(tab.id);
     port.onMessage.addListener(function(msg) {
         if (!msg) {
@@ -54,8 +51,14 @@ chrome.pageAction.onClicked.addListener(function(tab) {
             port.postMessage({call: 'show_result_tip', success: data.success});
         });
     });
-    port.postMessage({call: 'get_current_book_data'});
+    port.onDisconnect.addListener(function() {
+        clearInterval(timeout);
+    });
 
+    // loading icon
+    var timeout = flash_icon(tab.id);
+
+    port.postMessage({call: 'get_current_book_data'});
 });
 
 function send(book_id, book_data, callback) {

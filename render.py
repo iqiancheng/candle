@@ -137,7 +137,11 @@ templates = {
 
 
 def render(template_name, data):
-    return mustache.render(templates[template_name], data)
+    try:
+        return mustache.render(templates.get(template_name, 'paragraph'), data)
+    except:
+        # TODO more specific
+        return ''
 
 
 table_of_contents = []

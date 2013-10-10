@@ -32,7 +32,8 @@ def send_file_via_email(to_email, attachment_file):
     mail.ehlo()
     mail.starttls() 
 
-    mail.login(EMAIL_ACCOUNT, EMAIL_PWD)
+    if EMAIL_ACCOUNT and EMAIL_PWD:
+        mail.login(EMAIL_ACCOUNT, EMAIL_PWD)
 
     logger.info('mail server connected...start sending')
     mail.sendmail(msg['from'], msg['to'], msg.as_string())
@@ -40,4 +41,4 @@ def send_file_via_email(to_email, attachment_file):
     mail.close()
 
 if __name__ == '__main__':
-    send_file_via_email('wonderfuly@gmail.com', 'decrypt.py')
+    send_file_via_email('wonderfuly@kindle.cn', 'data/e1006646/e1006646.mobi')

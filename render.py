@@ -96,16 +96,12 @@ templates = {
             <docTitle><text>{{ title }}</text></docTitle>
             <docAuthor><text></text></docAuthor>
             <navMap>
-                <navPoint class="book">
-                    <navLabel><text>{{ title }}</text></navLabel>
-                    <content src="content.html" />
-                    {{#contents}}
-                        <navPoint class="chapter" id="{{ anchor }}" playOrder="{{ anchor }}">
-                            <navLabel><text>{{ title }}</text></navLabel>
-                            <content src="content.html#{{ anchor }}" />
-                        </navPoint>
-                    {{/contents}}
-                </navPoint>
+                {{#contents}}
+                    <navPoint class="chapter" id="{{ anchor }}" playOrder="{{ anchor }}">
+                        <navLabel><text>{{ title }}</text></navLabel>
+                        <content src="content.html#{{ anchor }}" />
+                    </navPoint>
+                {{/contents}}
             </navMap>
         </ncx>
     ''',
@@ -265,7 +261,7 @@ def render_content(content):
 if __name__ == '__main__':
     import json
     from decrypt import decrypt
-    book_id = 'e1531222'
+    book_id = 'e140964'
     with open('data/' + book_id + '/data.txt') as fp:
         file_content = fp.read()
     _, title, content = file_content.split(':')[:3]

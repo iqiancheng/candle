@@ -84,7 +84,8 @@ def send_to_kindle(book_id, book_data_str, to_email):
             book_mobi_path = None
 
     if book_mobi_path:
-        send_queue.enqueue(send_file_via_email, to_email, book_mobi_path)
+        subject = book_data.get('title', '') if to_email.endswith('@iduokan.com') else 'Convert'
+        send_queue.enqueue(send_file_via_email, to_email, book_mobi_path, subject)
 
 
 if __name__ == '__main__':

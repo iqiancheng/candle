@@ -9,11 +9,11 @@ from config import EMAIL_ACCOUNT, EMAIL_PWD, EMAIL_HOST, EMAIL_PORT
 
 logger = logging.getLogger(__name__)
 
-def send_file_via_email(to_email, attachment_file):
+def send_file_via_email(to_email, attachment_file, subject='Convert'):
     msg = MIMEMultipart()
     msg['from'] = EMAIL_ACCOUNT
     msg['to'] = to_email
-    msg['subject'] = 'Convert'
+    msg['subject'] = subject
 
     logger.info('going to send %s to %s from %s', attachment_file, msg['to'],
             msg['from'])

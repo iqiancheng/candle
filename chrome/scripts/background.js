@@ -48,6 +48,7 @@ chrome.pageAction.onClicked.addListener(function(tab) {
             clearInterval(timeout);
             set_icon(tab.id, 'icon19.png');
             show_result(tab.id, {success:false});
+            return;
         }
         send(response.book_id, response.book_data, function(data) {
             clearInterval(timeout);

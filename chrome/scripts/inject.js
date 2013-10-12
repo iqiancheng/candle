@@ -57,9 +57,4 @@ function show_result_tip(success) {
         '</div>';
 
     var el = $(html).hide().appendTo('body').fadeIn(1000);
-    setTimeout(function(){
-        el.fadeOut(2000, function(){
-            el.remove();
-        });
-    }, 3000);
 }

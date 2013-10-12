@@ -58,4 +58,10 @@ function show_result_tip(success) {
         '</div>';
 
     var el = $(html).hide().appendTo('body').fadeIn(1000);
+    $('.arkicon-back, .arkicon-notification').click(function(){
+        el.remove();
+    });
+    $(window).on('popstate', function() {
+        el.remove();
+    });
 }

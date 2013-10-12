@@ -52,8 +52,9 @@ function get_current_book_data(callback) {
 
 function show_result_tip(success) {
     var html = '<div id="send-to-kindle-result">' +
-        (success ? '<p>发送成功！</p><p class="content">请等待它出现在你的Kindle中</p>' :
-                   '<p>发送失败。</p><p class="content">请稍后重试</p>') +
+        (success ? '<p>发送成功！{x}</p><p class="content">请等待它出现在你的Kindle中</p>' :
+                   '<p>发送失败。{x}</p><p class="content">请稍后重试</p>').replace('{x}',
+                       '<span onclick="$(\'#send-to-kindle-result\').remove()">x</span>') +
         '</div>';
 
     var el = $(html).hide().appendTo('body').fadeIn(1000);

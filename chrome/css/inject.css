@@ -9,3 +9,9 @@
 #send-to-kindle-result .content {
 	margin-top: 10px;
 }
+
+#send-to-kindle-result p span {
+    float: right;
+    margin-top: -3px;
+    cursor: pointer;
+}

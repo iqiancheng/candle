@@ -48,7 +48,7 @@ def parse_book_data(book_data_str):
     data = dict(zip(['title', 'encrypted_content', 'purchase_time', 
         'is_sample', 'is_gift', 'has_formula', 'has_added', 'price'], tmp))
     for key in ['is_sample', 'is_gift', 'has_formula', 'has_added']:
-        data[key] = data[key] == '1'
+        data[key] = data.get(key) == '1'
     return data
 
 
